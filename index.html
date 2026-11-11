@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生活便利ツール＆地域アプリ | デベロッパー公式サイト</title>
+    <meta name="description" content="岸和田市ごみ分別アプリ、堺市ゴミ分別、買い物で役立つ「どちらがお得？単価計算機」など、毎日の暮らしを便利にするアプリとツールをご紹介します。">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --primary-light: #EFF6FF;
+            --green: #16A34A;
+            --green-light: #DCFCE7;
+            --accent: #F59E0B;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --border: #E2E8F0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #FFFFFF;
+            padding: 56px 20px 48px;
+            text-align: center;
+        }
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        header p {
+            font-size: 1.05rem;
+            color: #CBD5E1;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #0F172A;
+        }
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 24px;
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* App Cards */
+        .grid-apps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .badge-live {
+            background-color: var(--green-light);
+            color: #15803D;
+        }
+        .badge-soon {
+            background-color: #FEF3C7;
+            color: #B45309;
+        }
+        .badge-tool {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .app-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: #F1F5F9;
+            flex-shrink: 0;
+        }
+        .app-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0F172A;
+        }
+        .app-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+        .feature-list {
+            list-style: none;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .feature-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-list li::before {
+            content: "✓";
+            color: var(--green);
+            font-weight: bold;
+        }
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #0F172A;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s;
+        }
+        .btn-store:hover {
+            background-color: #334155;
+        }
+        .btn-disabled {
+            background-color: #94A3B8;
+            cursor: not-allowed;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 56px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 680px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .calc-box {
+            background: #F8FAFC;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+        .calc-box.active-winner {
+            border-color: var(--green);
+            background: #F0FDF4;
+        }
+        .calc-box-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .winner-tag {
+            background-color: var(--green);
+            color: #FFF;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            display: none;
+        }
+        .calc-field {
+            margin-bottom: 12px;
+        }
+        .calc-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .calc-input-group {
+            display: flex;
+            align-items: center;
+        }
+        .calc-input-group input {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .calc-input-group input:focus {
+            border-color: var(--primary);
+        }
+        .calc-input-group span {
+            margin-left: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            min-width: 30px;
+        }
+        .unit-price-display {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+        .unit-price-display strong {
+            font-size: 1.15rem;
+            color: #0F172A;
+        }
+        .calc-result-banner {
+            background: var(--primary-light);
+            border: 1px solid #BFDBFE;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1E3A8A;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            background: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>生活便利ツール &amp; 地域アプリ</h1>
+            <p>岸和田市・堺市のごみ分別スケジュールや、日々の買い物がお得になる計算ツールをご提供しています。</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- アプリ紹介セクション -->
+        <h2 class="section-title">提供中のアプリ・開発プロジェクト</h2>
+        <div class="grid-apps">
+            
+            <!-- 岸和田市ごみ分別 -->
+            <div class="card">
+                <div>
+                    <span class="badge badge-live">Google Play 配信中</span>
+                    <div class="app-header">
+                        <div class="app-icon">🗑️</div>
+                        <div>
+                            <div class="app-name">岸和田市ごみ分別</div>
+                            <small style="color:var(--text-muted);">収集日カレンダー＆分別辞典</small>
+                        </div>
+                    </div>
+                    <p class="app-desc">岸和田市の各地区に対応！今日・明日のごみ出しや月間カレンダー、品目ごとの分別方法を瞬時に確認できる住民向け便利アプリです。</p>
+                    <ul class="feature-list">
+                        <li>お住まいの地区に合わせた収集カレンダー</li>
+                        <li>40品目以上の五十音順分別辞典・検索機能</li>
+                        <li>前日・当日の指定時間リマインダー通知</li>
+                        <li>粗大ごみ申込手順＆連絡先ガイド</li>
+                    </ul>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=jp.co.android.waste.kishiwada" target="_blank" rel="noopener noreferrer" class="btn-store">
+                    <span>Google Play で見る</span> →
+                </a>
+            </div>
+
+            <!-- 堺市ゴミ分別 -->
+            <div class="card">
+                <div>
+                    <span class="badge badge-soon">近日公開予定</span>
+                    <div class="app-header">
+                        <div class="app-icon">♻️</div>
+                        <div>
+                            <div class="app-name">堺市ゴミ分別</div>
+                            <small style="color:var(--text-muted);">収集カレンダー＆分別検索</small>
+                        </div>
+                    </div>
+                    <p class="app-desc">堺市各区の収集パターンに対応したごみ分別アプリを現在準備中です。地区ごとの複雑な資源・普通ごみスケジュールを分かりやすくお届けします。</p>
+                    <ul class="feature-list">
+                        <li>堺市各行政区の収集日程対応（予定）</li>
+                        <li>ごみ品目別の詳細な分別ルール検索</li>
+                        <li>出し忘れを防ぐプッシュ通知機能</li>
+                    </ul>
+                </div>
+                <button class="btn-store btn-disabled" disabled>
+                    公開準備中 (Coming Soon)
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 価格検索・計算機セクション -->
+        <h2 class="section-title">WEBツール：どちらがお得？ (単価・お得度 計算機)</h2>
+        <div class="calculator-section">
+            <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.95rem;">
+                スーパーやドラッグストアで「大容量パックと小分けパック、どちらが本当にお得？」と迷った時にすぐ計算できるツールです。
+            </p>
+
+            <div class="calc-grid">
+                <!-- 商品 A -->
+                <div class="calc-box" id="boxA">
+                    <div class="calc-box-title">
+                        <span>商品 A</span>
+                        <span class="winner-tag" id="tagA">こちらがお得！</span>
+                    </div>
+                    <div class="calc-field">
+                        <label for="priceA">価格 (円)</label>
+                        <div class="calc-input-group">
+                            <input type="number" id="priceA" placeholder="例: 298" min="0" oninput="calculate()">
+                            <span>円</span>
+                        </div>
+                    </div>
+                    <div class="calc-field">
+                        <label for="amountA">容量・数量 (g / ml / 個)</label>
+                        <div class="calc-input-group">
+                            <input type="number" id="amountA" placeholder="例: 450" min="0" oninput="calculate()">
+                            <span>単位</span>
+                        </div>
+                    </div>
+                    <div class="unit-price-display">
+                        1単位あたり: <strong id="unitA">-</strong> 円
+                    </div>
+                </div>
+
+                <!-- 商品 B -->
+                <div class="calc-box" id="boxB">
+                    <div class="calc-box-title">
+                        <span>商品 B</span>
+                        <span class="winner-tag" id="tagB">こちらがお得！</span>
+                    </div>
+                    <div class="calc-field">
+                        <label for="priceB">価格 (円)</label>
+                        <div class="calc-input-group">
+                            <input type="number" id="priceB" placeholder="例: 580" min="0" oninput="calculate()">
+                            <span>円</span>
+                        </div>
+                    </div>
+                    <div class="calc-field">
+                        <label for="amountB">容量・数量 (g / ml / 個)</label>
+                        <div class="calc-input-group">
+                            <input type="number" id="amountB" placeholder="例: 1000" min="0" oninput="calculate()">
+                            <span>単位</span>
+                        </div>
+                    </div>
+                    <div class="unit-price-display">
+                        1単位あたり: <strong id="unitB">-</strong> 円
+                    </div>
+                </div>
+            </div>
+
+            <div class="calc-result-banner" id="resultBanner">
+                価格と容量を入力すると、どちらがお得か瞬時に判定されます。
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">プライバシーポリシー (Privacy Policy)</a>
+            <a href="app-ads.txt" target="_blank">app-ads.txt</a>
+        </div>
+        <p>&copy; 2026 Developer Portal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function calculate() {
+            const priceA = parseFloat(document.getElementById('priceA').value);
+            const amountA = parseFloat(document.getElementById('amountA').value);
+            const priceB = parseFloat(document.getElementById('priceB').value);
+            const amountB = parseFloat(document.getElementById('amountB').value);
+
+            const unitADisplay = document.getElementById('unitA');
+            const unitBDisplay = document.getElementById('unitB');
+            const resultBanner = document.getElementById('resultBanner');
+            const boxA = document.getElementById('boxA');
+            const boxB = document.getElementById('boxB');
+            const tagA = document.getElementById('tagA');
+            const tagB = document.getElementById('tagB');
+
+            // Reset UI states
+            boxA.classList.remove('active-winner');
+            boxB.classList.remove('active-winner');
+            tagA.style.display = 'none';
+            tagB.style.display = 'none';
+
+            let unitA = (priceA > 0 && amountA > 0) ? (priceA / amountA) : null;
+            let unitB = (priceB > 0 && amountB > 0) ? (priceB / amountB) : null;
+
+            unitADisplay.innerText = unitA !== null ? unitA.toFixed(3) : '-';
+            unitBDisplay.innerText = unitB !== null ? unitB.toFixed(3) : '-';
+
+            if (unitA !== null && unitB !== null) {
+                if (unitA < unitB) {
+                    const diffPercent = (((unitB - unitA) / unitB) * 100).toFixed(1);
+                    boxA.classList.add('active-winner');
+                    tagA.style.display = 'inline-block';
+                    resultBanner.innerHTML = `🎉 <strong>商品 A</strong> のほうが 1単位あたり約 <strong>${diffPercent}%</strong> お得です！`;
+                } else if (unitB < unitA) {
+                    const diffPercent = (((unitA - unitB) / unitA) * 100).toFixed(1);
+                    boxB.classList.add('active-winner');
+                    tagB.style.display = 'inline-block';
+                    resultBanner.innerHTML = `🎉 <strong>商品 B</strong> のほうが 1単位あたり約 <strong>${diffPercent}%</strong> お得です！`;
+                } else {
+                    resultBanner.innerHTML = `⚖️ <strong>商品 A と 商品 B は同じ単価です。</strong>`;
+                }
+            } else {
+                resultBanner.innerHTML = '価格と容量を入力すると、どちらがお得か瞬時に判定されます。';
+            }
+        }
+    </script>
+</body>
+</html>
