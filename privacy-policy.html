@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プライバシーポリシー | Privacy Policy</title>
+    <title>プライバシーポリシー | DailyCraft</title>
     <style>
         :root {
-            --primary: #2E7D32;
-            --primary-light: #E8F5E9;
-            --text-main: #2C3E50;
-            --text-muted: #607274;
-            --bg-body: #F8FAF9;
+            --primary: #2563EB;
+            --primary-light: #EFF6FF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --bg-body: #F8FAFC;
             --bg-card: #FFFFFF;
             --border-color: #E2E8F0;
         }
@@ -54,7 +54,7 @@
         }
         h1 {
             font-size: 1.85rem;
-            color: #1B5E20;
+            color: #0F172A;
             margin-bottom: 8px;
         }
         .date-badge {
@@ -63,7 +63,7 @@
             color: var(--text-muted);
         }
         h2 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--primary);
             margin: 32px 0 16px;
             padding-left: 12px;
@@ -80,12 +80,27 @@
         li {
             margin-bottom: 8px;
         }
+        .app-scope-box {
+            background-color: #F1F5F9;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 16px 0 24px;
+            font-size: 0.95rem;
+        }
         .note-box {
-            background-color: var(--primary-light);
-            border-radius: 8px;
+            background-color: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            border-radius: 6px;
             padding: 16px;
             margin: 20px 0;
             font-size: 0.92rem;
+            color: #92400E;
+        }
+        .note-box p {
+            margin-bottom: 8px;
+        }
+        .note-box p:last-child {
+            margin-bottom: 0;
         }
         a {
             color: var(--primary);
@@ -114,62 +129,75 @@
 <body>
     <div class="container">
         <header>
-            <a href="index.html" class="back-link">← ホームに戻る</a>
-            <h1>プライバシーポリシー</h1>
-            <span class="date-badge">最終改定日: 2026年11月11日（制定日: 2026年11月11日）</span>
+            <a href="index.html" class="back-link">← DailyCraft ホームに戻る</a>
+            <h1>プライバシーポリシー (Privacy Policy)</h1>
+            <span class="date-badge">最終改定日: 2026年11月12日（制定日: 2026年11月11日）</span>
         </header>
 
         <section>
-            <p>当デベロッパー（以下、「当方」）は、提供するAndroidアプリケーション「岸和田市ごみ分別」（以下、「本アプリ」）および関連サービスにおけるユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」）を定めます。</p>
+            <p><strong>DailyCraft</strong>（以下、「当方」）は、Google Play等で提供するすべてのスマートフォン向けアプリケーション（以下、「本アプリ群」）における利用者のプライバシーの保護と、取得する情報の適切な管理に努めています。本プライバシーポリシーでは、当方が配信する各アプリにおけるユーザー情報の取扱いについて定めます。</p>
 
-            <h2>1. 個人情報の収集について</h2>
-            <p>本アプリ自体は、氏名、住所、電話番号、メールアドレス、クレジットカード番号などの<strong>個人を特定できる情報を一切収集いたしません</strong>。</p>
-            <p>また、本アプリの利用にあたり会員登録やログインを要求することもありません。</p>
+            <h2>1. 対象となるアプリケーション</h2>
+            <p>本ポリシーは、DailyCraftが提供する以下のアプリケーションを含む、すべての公開中アプリに適用されます。</p>
+            <div class="app-scope-box">
+                <ul>
+                    <li><strong>岸和田市ごみ分別・収集日カレンダー</strong> (jp.co.android.waste.kishiwada)</li>
+                    <li><strong>堺市ゴミ分別</strong> (jp.co.android.waste_collection_schedule)</li>
+                    <li><strong>価格検索：どちらがお得(計算機)</strong> (jp.co.android.kimjk.gooddeal)</li>
+                    <li>その他、DailyCraftが配信するすべての関連アプリケーション</li>
+                </ul>
+            </div>
 
-            <h2>2. 端末内に保存される情報</h2>
-            <p>本アプリは、利便性向上のために以下の設定情報を端末内（SharedPreferences）にのみ保存します。これらの情報が当方のサーバーや外部に送信されることはありません。</p>
+            <h2>2. 個人情報の収集について</h2>
+            <p>当方が提供するアプリケーションは、氏名、住所、電話番号、メールアドレス、クレジットカード番号などの<strong>個人を特定できる情報を一切収集いたしません</strong>。</p>
+            <p>また、アプリをご利用いただくにあたり、ユーザーアカウントの作成やログイン等の操作を求めることもありません。</p>
+
+            <h2>3. 端末内にのみ保存される設定情報</h2>
+            <p>本アプリ群では、利便性の向上やアプリの正常動作を目的として、以下のデータをユーザーの端末内（SharedPreferences）にのみ保存する場合があります。これらのデータが当方の外部サーバー等に送信されることはありません。</p>
             <ul>
-                <li>選択された収集地域（地区・自治会）</li>
-                <li>通知のオン／オフ設定およびごみ種別の通知指定時刻</li>
+                <li><strong>自治体ごみ分別アプリ：</strong> 選択された地区・町名設定、通知のオン／オフ設定、通知希望時刻</li>
+                <li><strong>計算機・ユーティリティアプリ：</strong> 計算履歴やお気に入り設定など（該当機能がある場合）</li>
             </ul>
 
-            <h2>3. 広告配信および第三者モジュールについて</h2>
-            <p>本アプリでは、無料でのサービス提供およびアプリ運用の維持を目的として、第三者配信の広告サービス「<strong>Google AdMob</strong>」（Google LLC）を利用しています。</p>
-            <p>Google AdMob等の広告配信事業者は、ユーザーの興味に応じた広告（パーソナライズド広告）を表示するため、Cookie、広告識別子（Google Advertising ID / AAID）、端末情報、IPアドレスなどを自動的に取得・利用する場合があります。</p>
-            <p>これらの情報収集は各サービス提供者のプライバシーポリシーに基づいて管理されます。詳細およびオプトアウト（広告配信の制限）については、下記をご参照ください。</p>
+            <h2>4. 広告配信および第三者モジュールについて</h2>
+            <p>本アプリ群では、無料でのサービス提供およびアプリ運用の継続を目的として、第三者配信の広告サービス「<strong>Google AdMob</strong>」（Google LLC）を利用しています。</p>
+            <p>Google AdMob等の広告配信事業者は、利用者に最適な広告（パーソナライズド広告等）を表示するため、Cookie、広告識別子（Google Advertising ID / AAID）、端末識別情報、IPアドレス、アプリ利用状況などを自動的に取得する場合があります。</p>
+            <p>これらの情報収集は、各広告配信事業者のプライバシーポリシーに基づいて管理されます。詳細およびオプトアウト（広告追跡の制限・無効化）については、下記公式ページをご参照ください。</p>
             <ul>
                 <li><a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Google 広告に関するポリシー</a></li>
                 <li><a href="https://policies.google.com/privacy?hl=ja" target="_blank" rel="noopener noreferrer">Google プライバシーポリシー</a></li>
                 <li><a href="https://support.google.com/googleplay/android-developer/answer/6048248?hl=ja" target="_blank" rel="noopener noreferrer">Google Play 開発者サービス 広告 ID について</a></li>
             </ul>
 
-            <h2>4. アプリが要求する権限について</h2>
-            <p>本アプリは以下の端末権限を必要とします。これらは記載された目的以外には使用いたしません。</p>
+            <h2>5. アプリが要求する権限について</h2>
+            <p>一部のアプリでは、機能の提供に必要な範囲で以下の端末権限を要求する場合があります。これらの権限は記載された目的以外には使用いたしません。</p>
             <ul>
-                <li><strong>POST_NOTIFICATIONS（通知の送信）:</strong> ごみ収集日の事前通知を端末に表示するために使用します。</li>
-                <li><strong>SCHEDULE_EXACT_ALARM（正確なアラームの設定）:</strong> ユーザーが指定した正確な時刻にごみ収集の通知を配信するために使用します。</li>
+                <li><strong>POST_NOTIFICATIONS（通知の送信）:</strong> ごみ収集日前の事前通知など、ユーザーが設定したリマインダーを端末に表示するために使用します。</li>
+                <li><strong>SCHEDULE_EXACT_ALARM（正確なアラームの設定）:</strong> 指定された正確な時刻にリマインダー通知を発行するために使用します。</li>
             </ul>
 
-            <h2>5. 免責事項</h2>
+            <h2>6. 免責事項</h2>
             <div class="note-box">
-                <p><strong>※重要なお知らせ:</strong></p>
-                <p>本アプリは自治体の公開データ等をもとに個人デベロッパーが独自に開発・提供しているものであり、<strong>岸和田市およびその他各自治体の公式アプリではありません</strong>。</p>
-                <p>掲載データ（収集日程・分別区分・手数料等）の正確性には万全を期しておりますが、年末年始の臨時収集や制度変更等により実際の運用と異なる場合があります。最新の情報は各自治体の公式ホームページ等でご確認ください。本アプリの利用により生じた損害等について、当方は一切の責任を負いかねます。</p>
+                <p><strong>【自治体ごみ分別アプリに関する注意事項】</strong><br>
+                提供中のごみ分別アプリ（岸和田市・堺市等）は、各自治体の公開情報をもとに個人デベロッパーが独自に開発した<strong>非公式アプリ</strong>です。各自治体の公式アプリではありません。最新の収集日程・分別区分については各自治体の公式ホームページ等もあわせてご確認ください。</p>
+                <p><strong>【計算機アプリに関する注意事項】</strong><br>
+                計算結果および単価比較はあくまで目安・参考情報であり、実際の店舗での価格・税率・販売条件等により異なる場合があります。本アプリ群の利用により生じたいかなる損害・不都合についても、当方は一切の責任を負いかねます。</p>
             </div>
 
-            <h2>6. プライバシーポリシーの変更</h2>
-            <p>当方は、法令の制定・改廃やアプリの機能変更等に伴い、本ポリシーを必要に応じて改定することがあります。改定後のプライバシーポリシーは、本ページに掲載された時点から効力を生じるものとします。</p>
+            <h2>7. プライバシーポリシーの改定</h2>
+            <p>当方は、法令の制定・改廃、Google Playの規約変更、またはアプリの機能追加等に伴い、本ポリシーを予告なく変更することがあります。改定後のプライバシーポリシーは、本ページに掲載された時点より有効となります。</p>
 
-            <h2>7. お問い合わせ窓口</h2>
-            <p>本ポリシーおよび本アプリに関するご質問、ご意見、不具合等のご連絡は、下記までお願いいたします。</p>
+            <h2>8. お問い合わせ窓口</h2>
+            <p>本ポリシーまたは本アプリ群に関するご質問、ご意見、不具合等のご連絡は、下記までお願いいたします。</p>
             <ul>
-                <li>デベロッパー: <strong>Kishiwada Waste App Team</strong></li>
-                <li>メールアドレス: <strong>support@example.com</strong>（※お問い合わせ先メールアドレスを設定してください）</li>
+                <li>デベロッパー: <strong>DailyCraft</strong></li>
+                <li>デベロッパーページ: <a href="https://play.google.com/store/apps/developer?id=DailyCraft" target="_blank" rel="noopener noreferrer">Google Play - DailyCraft</a></li>
+                <li>お問い合わせメール: <strong>app.dev.infomation@gmail.com</strong></li>
             </ul>
         </section>
 
         <footer>
-            <p>&copy; 2026 Developer Portal. All rights reserved.</p>
+            <p>&copy; 2026 DailyCraft. All rights reserved.</p>
         </footer>
     </div>
 </body>
